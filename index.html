@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BULUT ÖZESİN</title>
+    <style>
+        /* Ana arka plan stil */
+        body {
+            background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            perspective: 1000px;
+        }
+
+        /* Metin konteyneri */
+        .text-container {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Ana metin stili */
+        .main-text {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: inline-block;
+            animation: float 6s ease-in-out infinite;
+            padding: 20px 40px;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+        }
+
+        /* Metin arka plan efekti */
+        .main-text::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 25px;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: glowing 20s linear infinite;
+            transform: translateZ(-20px);
+        }
+
+        /* Harf animasyonları */
+        .main-text span {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .main-text span:nth-child(1) { animation: bounce 2s infinite 0.1s; }
+        .main-text span:nth-child(2) { animation: bounce 2s infinite 0.2s; }
+        .main-text span:nth-child(3) { animation: bounce 2s infinite 0.3s; }
+        .main-text span:nth-child(4) { animation: bounce 2s infinite 0.4s; }
+        .main-text span:nth-child(5) { animation: bounce 2s infinite 0.5s; }
+        .main-text span:nth-child(6) { animation: bounce 2s infinite 0.6s; }
+        .main-text span:nth-child(7) { animation: bounce 2s infinite 0.7s; }
+        .main-text span:nth-child(8) { animation: bounce 2s infinite 0.8s; }
+        .main-text span:nth-child(9) { animation: bounce 2s infinite 0.9s; }
+        .main-text span:nth-child(10) { animation: bounce 2s infinite 1.0s; }
+
+        /* Bulut efekti */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .cloud-1 {
+            width: 200px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation: cloudMove 30s linear infinite;
+        }
+
+        .cloud-2 {
+            width: 300px;
+            height: 100px;
+            top: 40%;
+            right: 10%;
+            animation: cloudMove 40s linear infinite reverse;
+        }
+
+        .cloud-3 {
+            width: 150px;
+            height: 50px;
+            bottom: 30%;
+            left: 25%;
+            animation: cloudMove 25s linear infinite;
+        }
+
+        /* Animasyon tanımları */
+        @keyframes float {
+            0% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(10deg); }
+            100% { transform: translateY(0px) rotateY(0deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        /* Işık efektleri */
+        .light {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.5;
+        }
+
+        .light-1 {
+            background: #f6d365;
+            top: 20%;
+            left: 20%;
+            animation: pulse 4s infinite alternate;
+        }
+
+        .light-2 {
+            background: #fda085;
+            bottom: 20%;
+            right: 20%;
+            animation: pulse 5s infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.5); opacity: 0.6; }
+        }
+
+        /* Responsive ayarlar */
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 3rem;
+                padding: 15px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-text {
+                font-size: 2rem;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Ekstra detaylar */
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            to { transform: translateY(-100vh); }
+        }
+
+        /* 50 adet parçacık oluştur */
+        .particle:nth-child(1) {
+            width: 3px;
+            height: 3px;
+            left: 5%;
+            top: 110%;
+            animation-duration: 10s;
+            animation-delay: 0s;
+        }
+        /* Diğer parçacıklar... (49 tane daha eklenebilir) */
+    </style>
+</head>
+<body>
+    <div class="light light-1"></div>
+    <div class="light light-2"></div>
+    
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+
+    <div class="text-container">
+        <h1 class="main-text">BULUT ÖZESİN</h1>
+    </div>
+
+    <script>
+        // Rastgele parçacıklar oluştur
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Rastgele boyut (1px - 5px arası)
+                const size = Math.random() * 4 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Rastgele pozisyon
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Rastgele animasyon süresi (5s - 15s arası)
+                const duration = Math.random() * 10 + 5;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Rastgele opaklık
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                body.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>
